@@ -1,2 +1,2 @@
 # tese
-Parte de Código R usada na minha tese de doutorado
+Código R usado na minha tese de doutorado
