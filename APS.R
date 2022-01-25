@@ -4,7 +4,6 @@ require(hash, "/home/antonio.batista/Rpacks")
 require(jsonlite, "/home/antonio.batista/Rpacks")
 
 
-#find the position of the nth occurrence of str2 in str1(same order of parameters as Oracle SQL INSTR), returns 0 if not found
 instr <- function(str1,str2,startpos=1,n=1){
   aa=unlist(strsplit(substring(str1,startpos),str2))
   if(length(aa) < n+1 ) return(0);
@@ -29,11 +28,8 @@ for (i in 2:length(lines)){
 for (i in 2:length(lines)){ 
   id_citing<-substr(lines[i], 0 , instr(lines[i],",")-1 )
   id_cited<-substr(lines[i], instr(lines[i],",")+1 ,  nchar(lines[i]))
-	.set(p2p,id_cited,c(p2p[[id_cited]],list(id_citing)))
+  .set(p2p,id_cited,c(p2p[[id_cited]],list(id_citing)))
 }
-
-
-
 
 
 
@@ -80,13 +76,8 @@ for (i in 2:length(lines)){
 for (i in 2:length(lines)){ 
 
   v1<-substr(lines[i],instr(lines[i],",")+1, nchar(lines[i]))
-
-
   name<-substr(v1, 1 , instr(v1,",")-1 )
-
   papers<-substr(v1, instr(v1,"," )+1, nchar(v1))
-
-
   while(instr(papers,"\t" )!=0){
     .set(a2p,name, c(a2p[[name]], list(substr(papers, 1, instr(papers,"\t" )-1))))
     papers<-substr(papers, instr(papers,"\t" )+1, nchar(papers))
